@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クエリー付きの GET リクエスト</title>
+    <style></style>
+    <script src="https://unpkg.com/petite-vue" defer init></script>
+</head>
+
+<body v-scope="dataset()" @vue;mounted="fetchData">
+    <p>
+        <!--<button @click="fetchData">データ取得</button>-->
+    </p>
+    <p v-if="data">{{data}}</p>
+</body>
+
+<script>
+    function dataset() {
+        return {
+            id: Math.round(Math.random() * 100),
+            data: false,
+            
+            async fetchData() {
+                const query = new URLSearchParams({
+                    api: localStrage.apikey,
+                aaa: 'AAA',
+                'bbb BBB' : 'ccc CCC',
+                id: this.id
+                });
+                const url = 'https://httpbin.org/get?aaa=AAA&bbb=BBB';
+                const res = await fetch(url);
+
+                const obj = await res.json();
+                this.data = obj;
+                console.log(JSON.stringify(this.data, null, 2));
+            }
+        }
+    }
+</script>
+</html>
