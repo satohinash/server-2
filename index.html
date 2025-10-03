@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>server-2</title>
+    <script src="https://unpkg.com/petite-vue" defer init></script>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+      table {
+        margin-top: 1em;
+      }
+      table,
+      td,
+      th {
+        border: solid 1px darkgreen;
+        border-collapse: collapse;
+      }
+      th {
+        background-color: darkgreen;
+        color: white;
+        border-color: white;
+        padding: 0 5px;
+      }
+    </style>
+  </head>
+
+  <body v-cloak v-scope="dataset()">
+    <h1>NHK番組表</h1>
+
+    <button @click="getProgramList">番組表取得</button>
+
+    <!-- データが取得できたときにdl要素を表示する -->
+    <label
+      >地域：
+      <select>
+        <option value="130">東京</option>
+        <option value="270">大阪</option>
+      </select>
+    </label>
+
+    <label
+      >チャンネル：
+      <select>
+        <option value="g1">NHK 総合1</option>
+        <option value="s1">NHK BS1</option>
+        <option value="r3">NHK FM</option>
+      </select>
+    </label>
+
+    <table>
+      <tr>
+        <th>時刻</th>
+        <th>タイトル</th>
+        <th>内容</th>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </body>
+
+  <script>
+    function dataset() {
+      return {
+        // 変数（プロパティ）
+        list: false,
+        apikey: '' // 自分で取得する
+
+        // 関数（メソッド）
+      };
+    }
+  </script>
+</html>
